@@ -220,6 +220,12 @@ print(const T& container, std::size_t size = 0, std::string prefix = "", std::st
 	std::cout << to_hex_string(container.begin(), container.begin() + size, prefix, delimiter) << std::endl;
 }
 
+std::string to_lowercase(std::string& str) {
+	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+	return str;
+}
+
+
 /* HELPER TYPES */
 
 enum JOY_PID {

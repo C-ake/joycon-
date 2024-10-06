@@ -37,7 +37,7 @@ void JoyconManager::cleanup(){
 bool JoyconManager::bind(std::string _serial){
 	/* Make sure the Joycon Object doesn't exist! */
 	for(unsigned int i = 0; i < joycons.size(); i++){
-		if(joycons[i]->serial == _serial){
+		if(joycons[i]->serial == to_lowercase(_serial)){
 			std::cout<<"Joycon already bound."<<std::endl;
 			return false;
 		}
@@ -60,7 +60,7 @@ bool JoyconManager::bind(std::string _serial){
 		std::string sn(ws_sn.begin(), ws_sn.end());
 
 		/* Found the guy!! */
-		if(sn == _serial){
+		if(sn == to_lowercase(_serial)){
 			found = true;
 			break;
 		}
@@ -98,7 +98,7 @@ bool JoyconManager::bind(std::string _serial){
 bool JoyconManager::release(std::string _serial){
 	/* Make sure the Joycon Object exists... */
 	for(unsigned int i = 0; i < joycons.size(); i++){
-		if(joycons[i]->serial == _serial){
+		if(joycons[i]->serial == to_lowercase(_serial)){
 			std::cout<<"Unbinding Joycon..."<<std::endl;
 			delete joycons[i];
 			joycons.erase(joycons.begin()+i);
